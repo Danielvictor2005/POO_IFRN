@@ -4,8 +4,5 @@ public class Principal {
     Conta c1 = new Conta();
     c1.abrirConta();
     c1.depositar();
-
   }
 }
-
-
