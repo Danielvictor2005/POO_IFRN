@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Math;
 
 public class Conta {
 
@@ -26,7 +25,8 @@ public class Conta {
 
     for (String nome : afirmativos) {
       if (nome.equals(resposta)) {
-        depositar();
+        System.out.println("Valor inicial para depositar:");
+        valorDeposito += leitorX.nextDouble();
         return;
       }
     }
@@ -38,9 +38,11 @@ public class Conta {
     if (contaAberta == true) {
       System.out.println("\nValor para depósito: ");
       valorDeposito += leitorX.nextDouble();
+      mostrarDados();
     } else {
       abrirConta();
     }
+    repetirProcesso();
   }
 
   public void sacar() {
@@ -49,17 +51,37 @@ public class Conta {
       double retirar = leitorX.nextDouble();
       if (retirar <= valorDeposito) {
         valorDeposito -= retirar + 5;
+        mostrarDados();
       } else {
         System.out.println("Sua conta tem pouco saldo!");
       }
     } else {
       abrirConta();
     }
+    repetirProcesso();
+  }
+
+  private void repetirProcesso() {
+    System.out.println("Deseja depositar ou sacar? (1-Depositar 2-Sacar ou 3-Encerrar)");
+    int resposta = leitorX.nextInt();
+
+    while (resposta != 3) {
+      if (resposta == 1) {
+        depositar();
+        return;
+      } else if (resposta == 2) {
+        sacar();
+        return;
+      }
+    }
+    System.out.println("Encerrando o atendimento...");
+    mostrarDados();
   }
 
   private void mostrarDados() {
     System.out.println("Dados da conta:");
     System.out.printf("Numero: %s, Nome: %s, Saldo: $ %.2f\n", titular.obterNumConta(), titular.obterNome(),
         valorDeposito);
+    System.out.println("--------------------------------------------");
   }
 }
