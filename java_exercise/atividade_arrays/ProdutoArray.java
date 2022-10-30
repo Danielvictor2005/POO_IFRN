@@ -2,48 +2,47 @@ import java.util.Scanner;
 
 public class ProdutoArray {
 
-  private String[] produtosNomes;
-  private double[] precosProdutos;
+  // BLOCO: 1 (DE INICIALIZAÇÃO DE VARIÁREIS E OBJETOS EXTERNOS)
+
+  private String[] nomesArray;
+  private double[] precosArray;
 
   private double totalValor;
   private int tamanhoArray;
 
   Scanner leitorX = new Scanner(System.in);
 
+  // BLOCO: 2 (TODOS OS MÉTODOS)
+
   public void fazerCompras() {
     difinirTamanhoArray();
     inserirDados();
-    valorTota();
+    calcularMedia();
   }
 
-  private int difinirTamanhoArray() {
+  // BLOCO: 3 (MÉTODOS ESPECIAIS COM CADA FUNÇÃO DO PROGRAMA)
+
+  private void difinirTamanhoArray() {
 
     System.out.println("Difina um tamanho do array: ");
     tamanhoArray = leitorX.nextInt();
 
-    produtosNomes = new String[tamanhoArray];
-    precosProdutos = new double[tamanhoArray];
-
-    return tamanhoArray;
+    nomesArray = new String[tamanhoArray];
+    precosArray = new double[tamanhoArray];
   }
 
   private void inserirDados() {
-
-    if (tamanhoArray != 0) {
-      for (int x = 0; x < tamanhoArray; x++) {
-        System.out.println("Insira o nome do produto e preço: ");
-        produtosNomes[x] = leitorX.next();
-        precosProdutos[x] = leitorX.nextDouble();
-      }
-    } else {
-      difinirTamanhoArray();
+    for (int x = 0; x < tamanhoArray; x++) {
+      System.out.println("Insira o nome do produto e preço: ");
+      nomesArray[x] = leitorX.next();
+      precosArray[x] = leitorX.nextDouble();
     }
   }
 
-  private void valorTota() {
+  private void calcularMedia() {
     for (int x = 0; x < tamanhoArray; x++) {
-      totalValor += precosProdutos[x];
+      totalValor += precosArray[x];
     }
-    System.out.println("Valor total: " + totalValor);
+    System.out.println("Valor médio: " + totalValor / tamanhoArray);
   }
 }
