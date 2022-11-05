@@ -1,37 +1,26 @@
 import java.util.Scanner;
 
-public class Conta {
+public class Conta extends Titular {
 
-  private final String[] afirmativos = { "y", "yes", "sim" };
   private double valorDeposito = 0;
   private boolean contaAberta;
 
-  Titular titular = new Titular();
   Scanner leitorX = new Scanner(System.in);
 
   public void abrirConta() {
 
     contaAberta = true;
 
-    if (titular.obterNome() == null) {
-      titular.inserirNome();
-    }
-    if (titular.obterNumConta() == 0) {
-      titular.inserirNumConta();
-    }
+    cadastroPessoal();
 
-    System.out.println("Deseja inserir um depósito inicial?");
-    String resposta = leitorX.next();
+    System.out.println("Deseja inserir um depósito inicial? Digite 1 para aceitar");
+    int resposta = leitorX.nextInt();
 
-    for (String nome : afirmativos) {
-      if (nome.equals(resposta)) {
-        System.out.println("Valor inicial para depositar:");
-        valorDeposito += leitorX.nextDouble();
-        return;
-      }
+    if (resposta == 1) {
+      System.out.println("Valor inicial para depositar:");
+      valorDeposito += leitorX.nextDouble();
     }
     mostrarDados();
-
   }
 
   public void depositar() {
@@ -42,7 +31,7 @@ public class Conta {
     } else {
       abrirConta();
     }
-    repetirProcesso();
+    repeticaoDeProcessos();
   }
 
   public void sacar() {
@@ -56,12 +45,13 @@ public class Conta {
         System.out.println("Sua conta tem pouco saldo!");
       }
     } else {
+      System.out.println("Você ainda não tem uma conta...");
       abrirConta();
     }
-    repetirProcesso();
+    repeticaoDeProcessos();
   }
 
-  private void repetirProcesso() {
+  private void repeticaoDeProcessos() {
     System.out.println("Deseja depositar ou sacar? (1-Depositar 2-Sacar ou 3-Encerrar)");
     int resposta = leitorX.nextInt();
 
@@ -69,7 +59,7 @@ public class Conta {
       if (resposta == 1) {
         depositar();
         return;
-      } else if (resposta == 2) {
+      } else {
         sacar();
         return;
       }
@@ -80,7 +70,7 @@ public class Conta {
 
   private void mostrarDados() {
     System.out.println("Dados da conta:");
-    System.out.printf("Numero: %s, Nome: %s, Saldo: $ %.2f\n", titular.obterNumConta(), titular.obterNome(),
+    System.out.printf("Numero: %s, Nome: %s, Saldo: $ %.2f\n", obterNumConta(), obterNome(),
         valorDeposito);
     System.out.println("--------------------------------------------");
   }

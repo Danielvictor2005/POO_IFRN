@@ -6,7 +6,12 @@ public class Titular {
   private String titularNome;
   private int numeroConta;
 
-  public void inserirNome() {
+  public void cadastroPessoal() {
+    inserirNome();
+    inserirNumConta();
+  }
+
+  private void inserirNome() {
     System.out.println("Inserir o nome do titular da conta");
     titularNome = leitorX.next();
   }
@@ -15,7 +20,7 @@ public class Titular {
     return titularNome;
   }
 
-  public void inserirNumConta() {
+  private void inserirNumConta() {
     System.out.println("Inserir o número da conta");
     numeroConta = leitorX.nextInt();
   }
