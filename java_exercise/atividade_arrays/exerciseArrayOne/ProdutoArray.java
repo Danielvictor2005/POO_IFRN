@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class ProdutoArray {
 
   // BLOCO: 1 (DE INICIALIZAÇÃO DE VARIÁREIS E OBJETOS EXTERNOS)
