@@ -5,5 +5,6 @@ public class Main {
     Scanner leitor = new Scanner(System.in);
     System.out.println("Digite: ");
     CurrencyConverter.readPriceDollar();
+    leitor.close();
   }
 }

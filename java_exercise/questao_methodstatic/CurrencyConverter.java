@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class CurrencyConverter {
   private static double dollarPrice;
