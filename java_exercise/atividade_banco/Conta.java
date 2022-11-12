@@ -5,7 +5,7 @@ public class Conta extends Titular {
   private double valorDeposito = 0;
   private boolean contaAberta;
 
-  Scanner leitorX = new Scanner(System.in);
+  Scanner leitor = new Scanner(System.in);
 
   public void abrirConta() {
 
@@ -14,11 +14,11 @@ public class Conta extends Titular {
     cadastroPessoal();
 
     System.out.println("Deseja inserir um depósito inicial? Digite 1 para aceitar");
-    int resposta = leitorX.nextInt();
+    int resposta = leitor.nextInt();
 
     if (resposta == 1) {
       System.out.println("Valor inicial para depositar:");
-      valorDeposito += leitorX.nextDouble();
+      valorDeposito += leitor.nextDouble();
     }
     mostrarDados();
   }
@@ -26,7 +26,7 @@ public class Conta extends Titular {
   public void depositar() {
     if (contaAberta == true) {
       System.out.println("\nValor para depósito: ");
-      valorDeposito += leitorX.nextDouble();
+      valorDeposito += leitor.nextDouble();
       mostrarDados();
     } else {
       abrirConta();
@@ -37,7 +37,7 @@ public class Conta extends Titular {
   public void sacar() {
     if (contaAberta == true) {
       System.out.println("\nQuanto deseja retirar: ");
-      double retirar = leitorX.nextDouble();
+      double retirar = leitor.nextDouble();
       if (retirar <= valorDeposito) {
         valorDeposito -= retirar + 5;
         mostrarDados();
@@ -53,7 +53,7 @@ public class Conta extends Titular {
 
   private void repeticaoDeProcessos() {
     System.out.println("Deseja depositar ou sacar? (1-Depositar 2-Sacar ou 3-Encerrar)");
-    int resposta = leitorX.nextInt();
+    int resposta = leitor.nextInt();
 
     while (resposta != 3) {
       if (resposta == 1) {
@@ -73,5 +73,6 @@ public class Conta extends Titular {
     System.out.printf("Numero: %s, Nome: %s, Saldo: $ %.2f\n", obterNumConta(), obterNome(),
         valorDeposito);
     System.out.println("--------------------------------------------");
+
   }
 }
