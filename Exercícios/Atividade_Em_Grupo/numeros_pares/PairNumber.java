@@ -7,7 +7,7 @@ public class PairNumber {
     private int amountPairs = 0;
     private int numbersArray[];
 
-    private int setValuesArray() {
+    private void setValuesArray() {
 
         System.out.println("How many numbers will you type: ");
         int x = leitorX.nextInt();
