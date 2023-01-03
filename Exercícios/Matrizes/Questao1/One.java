@@ -10,7 +10,8 @@ public class One {
   Scanner leitorX = new Scanner(System.in);
 
   private void leituraDeDados() {
-    System.out.println("Digite um número para linhas: "); qLinhas = leitorX.nextInt();
+    System.out.println("Digite um número para linhas: ");
+    qLinhas = leitorX.nextInt();
 
     System.out.println("Digite um número para colunas: ");
     qColunas = leitorX.nextInt();
